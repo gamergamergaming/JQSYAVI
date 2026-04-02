@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>I'm Sorry 💖</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ffd6e7, #ffeef5);
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .container {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.8s ease;
+    }
+
+    img {
+      width: 260px;
+      border-radius: 20px;
+      margin: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      animation: pop 0.5s ease;
+    }
+
+    h1, h2, p {
+      color: #ff4d88;
+    }
+
+    button {
+      padding: 12px 22px;
+      margin: 10px;
+      border: none;
+      border-radius: 20px;
+      background: #ff4d88;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      background: #ff1a66;
+    }
+
+    #noBtn {
+      position: absolute;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes pop {
+      from {transform: scale(0.8);}
+      to {transform: scale(1);}
+    }
+  </style>
+</head>
+<body>
+
+<div class="container" id="content">
+  <h1>Hey love 💕</h1>
+  <p>I made something for you...</p>
+  <button onclick="next()">Click me 🥺</button>
+</div>
+
+<script>
+  let step = 0;
+
+  // ✅ ALL WORKING GIFS
+  const gifs = [
+    "https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif",
+    "https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif",
+    "https://media.giphy.com/media/9Y5BbDSkSTiY8/giphy.gif",
+    "https://media.giphy.com/media/26BRv0ThflsHCqDrG/giphy.gif"
+  ];
+
+  function next() {
+    step++;
+    const content = document.getElementById("content");
+
+    if (step === 1) {
+      content.innerHTML = `
+        <img src="${gifs[0]}">
+        <p>I know I messed up... and I'm really sorry 😔</p>
+        <button onclick="next()">Next 👉</button>
+      `;
+    }
+
+    else if (step === 2) {
+      content.innerHTML = `
+        <img src="${gifs[1]}">
+        <p>You mean so much to me 💖</p>
+        <button onclick="next()">More 👉</button>
+      `;
+    }
+
+    else if (step === 3) {
+      content.innerHTML = `
+        <img src="${gifs[2]}">
+        <p>I promise I'll do better, for us 🫶</p>
+        <button onclick="next()">Last one 💌</button>
+      `;
+    }
+
+    else if (step === 4) {
+      content.innerHTML = `
+        <img src="${gifs[3]}">
+        <h2>Will you forgive me? 🥺</h2>
+        <button onclick="yes()">Yes 😭</button>
+        <button id="noBtn" onmouseover="moveNo()">No 😤</button>
+      `;
+    }
+  }
+
+  function yes() {
+    document.body.innerHTML = `
+      <div class="container">
+        <h1>YAY!! 💖</h1>
+        <p>I love you so much 🥹</p>
+        <p>Thank you for giving me another chance 💕</p>
+      </div>
+    `;
+  }
+
+  function moveNo() {
+    const btn = document.getElementById("noBtn");
+    btn.style.top = Math.random() * (window.innerHeight - 60) + "px";
+    btn.style.left = Math.random() * (window.innerWidth - 120) + "px";
+  }
+</script>
+
+</body>
+</html>
